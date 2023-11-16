@@ -1,4 +1,4 @@
-{% static %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,10 +9,18 @@
 <body>
     <h1>Welcome to the homepage</h1>
 
+    {% if user.is_authenticated %}
     <button type="submit">
         <p class="logouthere">
             <a href="{% url 'logout' %}" class="logouthere-link">Logout</a>
         </p>
     </button>
+    {% else %}
+    <button type="submit">
+        <p class="loginhere">
+            <a href="{% url 'login' %}" class="logouthere-link">Login</a>
+        </p>
+    </button>
+    {% endif %}
 </body>
 </html>
